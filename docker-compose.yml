@@ -1,0 +1,65 @@
+name: local-tts
+
+services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: tts-gateway
+    env_file:
+      - .env
+    environment:
+      KOKORO_URL: ${KOKORO_URL:-http://kokoro:8880}
+      CHATTERBOX_URL: ${CHATTERBOX_URL:-http://chatterbox:8000}
+      DEFAULT_ENGINE: ${DEFAULT_ENGINE:-kokoro}
+      DEFAULT_VOICE_KOKORO: ${DEFAULT_VOICE_KOKORO:-ef_dora}
+      DEFAULT_VOICE_CHATTERBOX: ${DEFAULT_VOICE_CHATTERBOX:-alloy}
+      DEFAULT_LANG_CODE: ${DEFAULT_LANG_CODE:-es}
+      OUTPUT_FORMAT: ${OUTPUT_FORMAT:-mp3}
+      REQUEST_TIMEOUT_SECONDS: ${REQUEST_TIMEOUT_SECONDS:-120}
+      CHUNK_MAX_CHARS: ${CHUNK_MAX_CHARS:-500}
+      CHUNK_LANGUAGE: ${CHUNK_LANGUAGE:-es}
+      MAX_INPUT_CHARS: ${MAX_INPUT_CHARS:-12000}
+    ports:
+      - "${GATEWAY_PORT:-9000}:9000"
+    restart: unless-stopped
+
+  kokoro:
+    image: ${KOKORO_IMAGE:-ghcr.io/remsky/kokoro-fastapi-cpu:latest}
+    container_name: tts-kokoro
+    ports:
+      - "8880:8880"
+    restart: unless-stopped
+
+  chatterbox:
+    image: hanseware/chatterbox-tts-api:blackwell-20260207
+    container_name: tts-chatterbox
+    gpus: all
+    environment:
+      HOST: ${CHATTERBOX_HOST:-0.0.0.0}
+      PORT: ${CHATTERBOX_PORT:-8000}
+      DEVICE: ${CHATTERBOX_DEVICE:-cuda}
+      USE_MULTILINGUAL_MODEL: ${CHATTERBOX_USE_MULTILINGUAL_MODEL:-true}
+      EXAGGERATION: ${CHATTERBOX_EXAGGERATION:-0.5}
+      CFG_WEIGHT: ${CHATTERBOX_CFG_WEIGHT:-0.5}
+      TEMPERATURE: ${CHATTERBOX_TEMPERATURE:-0.8}
+      MAX_CHUNK_LENGTH: ${CHATTERBOX_MAX_CHUNK_LENGTH:-280}
+      MEMORY_CLEANUP_INTERVAL: ${CHATTERBOX_MEMORY_CLEANUP_INTERVAL:-5}
+      CUDA_CACHE_CLEAR_INTERVAL: ${CHATTERBOX_CUDA_CACHE_CLEAR_INTERVAL:-3}
+      ENABLE_MEMORY_MONITORING: ${CHATTERBOX_ENABLE_MEMORY_MONITORING:-true}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chatterbox_data/voices:/voices
+    restart: unless-stopped
+
+  chatterbox-audit:
+    image: ghcr.io/devnen/chatterbox-tts-server:latest
+    container_name: tts-chatterbox-audit
+    profiles:
+      - audit
+    gpus: all
+    ports:
+      - "8010:8000"
+      - "4123:4123"
+    restart: unless-stopped

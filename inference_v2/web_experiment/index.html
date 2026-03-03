@@ -1,0 +1,232 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kokoro Simple Web TTS</title>
+    <style>
+      :root {
+        --bg: #f4f6f8;
+        --panel: #ffffff;
+        --ink: #1d2733;
+        --muted: #4f5d6b;
+        --accent: #0b6f8a;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at top left, #e8f4f7, var(--bg) 55%);
+      }
+      .wrap {
+        max-width: 880px;
+        margin: 24px auto;
+        padding: 0 14px 28px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid #d7dde4;
+        border-radius: 12px;
+        padding: 14px;
+        box-shadow: 0 8px 28px rgba(11, 23, 36, 0.06);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 22px;
+      }
+      p {
+        margin: 6px 0 0;
+        color: var(--muted);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        color: var(--muted);
+        margin: 2px 0 4px;
+      }
+      select,
+      input,
+      textarea,
+      button {
+        font: inherit;
+      }
+      select,
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #c8d1db;
+        border-radius: 8px;
+        padding: 8px 10px;
+        box-sizing: border-box;
+      }
+      textarea {
+        min-height: 130px;
+        resize: vertical;
+      }
+      button {
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        background: var(--accent);
+        color: #fff;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      button:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+      }
+      .metric {
+        margin-top: 12px;
+        background: #f6f9fc;
+        border: 1px solid #dde7f0;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+      }
+      #status {
+        margin-top: 10px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 12px;
+        color: #334;
+        white-space: pre-wrap;
+      }
+      @media (max-width: 760px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Kokoro Web TTS (Texto a Audio)</h1>
+        <p>Escribe texto, genera audio y dale play directamente.</p>
+
+        <div class="row">
+          <div>
+            <label for="voice">Voz</label>
+            <select id="voice">
+              <option value="ef_dora">ef_dora (Femenino)</option>
+              <option value="em_alex">em_alex (Masculino)</option>
+              <option value="em_santa" selected>em_santa (Masculino especial)</option>
+            </select>
+          </div>
+          <div>
+            <label for="format">Formato</label>
+            <select id="format">
+              <option value="opus">opus (ogg)</option>
+              <option value="mp3">mp3</option>
+              <option value="wav">wav</option>
+              <option value="flac">flac</option>
+            </select>
+          </div>
+          <div>
+            <label for="speed">Velocidad</label>
+            <input id="speed" type="number" min="0.25" max="4" step="0.05" value="1.0" />
+          </div>
+        </div>
+
+        <label for="text">Texto</label>
+        <textarea id="text" placeholder="Pega aqui el texto completo..."></textarea>
+
+        <div class="controls">
+          <button id="generateBtn">Generar audio</button>
+          <button id="stopBtn" type="button">Detener</button>
+        </div>
+
+        <div class="metric"><strong>TTS ms:</strong> <span id="ttsMs">-</span></div>
+        <audio id="player" controls style="margin-top: 12px; width: 100%"></audio>
+        <div id="status"></div>
+      </div>
+    </div>
+
+    <script>
+      const textEl = document.getElementById("text");
+      const voiceEl = document.getElementById("voice");
+      const formatEl = document.getElementById("format");
+      const speedEl = document.getElementById("speed");
+      const generateBtn = document.getElementById("generateBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const player = document.getElementById("player");
+      const ttsMsEl = document.getElementById("ttsMs");
+      const statusEl = document.getElementById("status");
+      let currentObjectUrl = null;
+
+      function setStatus(msg) {
+        statusEl.textContent = msg;
+      }
+
+      function stopAudio() {
+        player.pause();
+        if (currentObjectUrl) {
+          URL.revokeObjectURL(currentObjectUrl);
+          currentObjectUrl = null;
+        }
+        player.removeAttribute("src");
+      }
+
+      async function generateAudio() {
+        const input = textEl.value.trim();
+        if (!input) {
+          setStatus("Escribe texto para generar audio.");
+          return;
+        }
+
+        generateBtn.disabled = true;
+        ttsMsEl.textContent = "-";
+        setStatus("Generando audio...");
+        stopAudio();
+
+        try {
+          const resp = await fetch("/api/tts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              text: input,
+              voice: voiceEl.value || "em_santa",
+              response_format: formatEl.value,
+              speed: Number(speedEl.value || "1.0"),
+            }),
+          });
+
+          if (!resp.ok) {
+            const data = await resp.json().catch(() => ({}));
+            throw new Error(data.detail || "Error al generar TTS");
+          }
+
+          const blob = await resp.blob();
+          const ttsMs = resp.headers.get("X-TTS-Ms") || "-";
+          ttsMsEl.textContent = ttsMs;
+
+          currentObjectUrl = URL.createObjectURL(blob);
+          player.src = currentObjectUrl;
+          await player.play();
+          setStatus("Audio listo y reproduciendo.");
+        } catch (err) {
+          setStatus(`Error: ${err.message || err}`);
+        } finally {
+          generateBtn.disabled = false;
+        }
+      }
+
+      generateBtn.addEventListener("click", generateAudio);
+      stopBtn.addEventListener("click", () => {
+        stopAudio();
+        setStatus("Audio detenido.");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "voices": {
+    "es_carlos": {
+      "name": "es_carlos",
+      "filename": "es_carlos.mp3",
+      "original_filename": "voice-sample.mp3",
+      "file_extension": ".mp3",
+      "file_size": 50198,
+      "file_hash": "71b603f18a261753783a15ea8a1a69c8",
+      "upload_date": "2026-03-01T21:24:26.285797",
+      "path": "/voices/es_carlos.mp3",
+      "language": "es",
+      "aliases": []
+    },
+    "es_latino_fav": {
+      "name": "es_latino_fav",
+      "filename": "es_latino_fav.mp3",
+      "original_filename": "chatterbox_default_voice_es_after_fix.mp3",
+      "file_extension": ".mp3",
+      "file_size": 178638,
+      "file_hash": "1f9928ed1b7d9d79794aee317c425608",
+      "upload_date": "2026-03-01T21:35:56.995205",
+      "path": "/voices/es_latino_fav.mp3",
+      "language": "es",
+      "aliases": []
+    },
+    "voz_lorena": {
+      "name": "voz_lorena",
+      "filename": "voz_lorena.ogg",
+      "original_filename": "voz_lorena.ogg",
+      "file_extension": ".ogg",
+      "file_size": 20018,
+      "file_hash": "7258e3a6e17b438f6e823d546d681ba7",
+      "upload_date": "2026-03-01T21:40:40.947025",
+      "path": "/voices/voz_lorena.ogg",
+      "language": "es",
+      "aliases": []
+    }
+  },
+  "version": "2.0"
+}

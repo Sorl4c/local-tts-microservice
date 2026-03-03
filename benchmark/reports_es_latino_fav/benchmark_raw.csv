@@ -1,0 +1,13 @@
+sample_id,engine,chars,latency_ms,ttfa_ms,audio_seconds,rtf,chars_per_sec,bytes,chunks,status,error,mos_subjective_1_5,audio_file
+s01,chatterbox,48,6450.13,6438.7,3.08,2.0942,7.44,147918,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s01.mp3
+s02,chatterbox,135,14044.97,14043.48,7.36,1.9083,9.61,353358,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s02.mp3
+s03,chatterbox,12,6280.81,6280.5,2.12,2.9626,1.91,101838,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s03.mp3
+s04,chatterbox,68,8504.17,8503.66,3.72,2.2861,8.0,178638,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s04.mp3
+s05,chatterbox,134,17132.53,17130.22,8.56,2.0015,7.82,410958,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s05.mp3
+s06,chatterbox,48,7089.7,7088.95,3.48,2.0373,6.77,167118,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s06.mp3
+s07,chatterbox,112,14638.53,14637.29,8.36,1.751,7.65,401358,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s07.mp3
+s08,chatterbox,55,9455.43,9453.89,3.68,2.5694,5.82,176718,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s08.mp3
+s09,chatterbox,135,13498.06,13495.95,7.84,1.7217,10.0,376398,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s09.mp3
+s10,chatterbox,58,6176.9,6176.03,3.12,1.9798,9.39,149838,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s10.mp3
+s11,chatterbox,136,19124.03,19122.24,7.6,2.5163,7.11,364878,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s11.mp3
+s12,chatterbox,105,14014.0,14012.15,6.16,2.275,7.49,295758,1,ok,,,benchmark\outputs_es_latino_fav\chatterbox\s12.mp3

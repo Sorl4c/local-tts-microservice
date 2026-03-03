@@ -1,0 +1,40 @@
+.env
+.venv/
+.venv312/
+.venv_v2/
+__pycache__/
+*.pyc
+.pytest_cache/
+benchmark/outputs/
+benchmark/outputs_*/
+benchmark/reports/
+kokoro_local/Kokoro-FastAPI/
+
+# Runtime/log artifacts
+*.log
+*.out
+*.err
+
+# Audio and media artifacts (bench/tests/manual runs)
+*.wav
+*.ogg
+*.mp3
+*.flac
+*.aac
+*.m4a
+*.opus
+*.png
+
+# Model binaries/checkpoints
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.gguf
+*.npy
+*.npz
+
+# Local experiment artifacts
+inference_v2/web_experiment/_e2e_outputs/

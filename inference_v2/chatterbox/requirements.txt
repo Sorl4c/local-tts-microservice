@@ -1,0 +1,7 @@
+chatterbox-tts
+numpy>=1.26.0,<2.0.0
+torch
+torchaudio
+fastapi
+uvicorn
+pydantic

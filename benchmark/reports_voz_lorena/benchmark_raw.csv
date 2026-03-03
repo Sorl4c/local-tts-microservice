@@ -1,0 +1,13 @@
+sample_id,engine,chars,latency_ms,ttfa_ms,audio_seconds,rtf,chars_per_sec,bytes,chunks,status,error,mos_subjective_1_5,audio_file
+s01,chatterbox,48,8976.73,8956.96,3.98,2.2555,5.35,191118,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s01.mp3
+s02,chatterbox,135,16020.97,16019.2,8.86,1.8082,8.43,425358,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s02.mp3
+s03,chatterbox,12,4569.9,4569.67,1.7,2.6882,2.63,81678,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s03.mp3
+s04,chatterbox,68,11216.18,11215.09,5.02,2.2343,6.06,241038,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s04.mp3
+s05,chatterbox,134,19052.15,19050.71,9.5,2.0055,7.03,456078,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s05.mp3
+s06,chatterbox,48,10519.78,10518.51,5.34,1.97,4.56,256398,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s06.mp3
+s07,chatterbox,112,20707.89,20706.38,8.14,2.544,5.41,390798,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s07.mp3
+s08,chatterbox,55,9224.99,9224.3,4.22,2.186,5.96,202638,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s08.mp3
+s09,chatterbox,135,18240.88,18239.0,7.82,2.3326,7.4,375438,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s09.mp3
+s10,chatterbox,58,14976.03,14974.08,5.86,2.5556,3.87,281358,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s10.mp3
+s11,chatterbox,136,19758.38,19756.75,8.34,2.3691,6.88,400398,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s11.mp3
+s12,chatterbox,105,15456.77,15455.16,6.9,2.2401,6.79,331278,1,ok,,,benchmark\outputs_voz_lorena\chatterbox\s12.mp3

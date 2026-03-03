@@ -1,0 +1,18 @@
+ He reescrito completamente el archivo README.md.
+
+
+  Ahora la guía principal del repositorio documenta la nueva arquitectura V2 (Bare Metal / Inferencia Pura) como el estándar recomendado.
+
+
+  He incluido:
+   1. Las instrucciones de arranque rápido con el script de PowerShell.
+   2. Una sección dedicada a la Integración con Second Brain que contiene el código de ejemplo exacto (en Python) de cómo conectar el SDK
+      oficial de OpenAI a tu servidor local de Kokoro.
+   3. Los formatos soportados explícitamente (opus, mp3, wav, flac) para que sepas qué puedes pedirle desde el bot.
+   4. Las instrucciones de cómo correr el nuevo benchmark.
+   5. He movido la arquitectura Docker antigua a una sección final llamada "Legacy", marcándola como deprecada por motivos de rendimiento,
+      pero dejándola ahí como referencia histórica por si acaso.
+
+
+  El microservicio está corriendo ahora mismo en tu máquina, expuesto en el puerto 8882 y listo para que lo integres en tu bot de Telegram
+  cuando quieras. ¿Te puedo ayudar a revisar algo más del proyecto o damos por concluida esta optimización?

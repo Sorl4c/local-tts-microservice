@@ -1,0 +1,13 @@
+sample_id,engine,audio_file,naturalidad_1_5,pronunciacion_1_5,estabilidad_1_5,comentarios
+s01,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s01.mp3,,,,
+s02,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s02.mp3,,,,
+s03,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s03.mp3,,,,
+s04,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s04.mp3,,,,
+s05,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s05.mp3,,,,
+s06,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s06.mp3,,,,
+s07,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s07.mp3,,,,
+s08,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s08.mp3,,,,
+s09,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s09.mp3,,,,
+s10,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s10.mp3,,,,
+s11,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s11.mp3,,,,
+s12,chatterbox,benchmark\outputs_voz_lorena\chatterbox\s12.mp3,,,,

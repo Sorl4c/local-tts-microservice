@@ -1,0 +1,14 @@
+--index-url https://download.pytorch.org/whl/cu128
+torch
+torchvision
+torchaudio
+
+--extra-index-url https://pypi.org/simple
+fastapi
+uvicorn[standard]
+httpx
+numpy
+soundfile
+misaki[en]
+kokoro>=0.9.4
+
