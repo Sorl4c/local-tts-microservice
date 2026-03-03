@@ -16,9 +16,18 @@ Incluye:
 - Lectura de portapapeles con fallback.
 - Llamada a endpoint Kokoro (`/v1/audio/speech`).
 - Reproduccion de audio WAV temporal.
+- Popup visual nativo (Tkinter) con controles:
+  - `Stop`
+  - `Pause`
+  - `Play`
+  - slider de velocidad
+  - combo de voz
+- Persistencia local de velocidad en `config.json`.
 - Menu tray:
   - Leer portapapeles
   - Probar lectura
+  - Pausar / Reanudar audio
+  - Mostrar control de audio
   - Probar audio local
   - Diagnostico endpoint
   - Iniciar/Parar Kokoro
@@ -46,6 +55,7 @@ Hace:
 
 - `inference_v2/tray_tts/tray_tts.log`: log operativo.
 - `inference_v2/tray_tts/tmp_audio/*.wav`: audio temporal para reproduccion.
+- `inference_v2/tray_tts/config.json`: configuracion persistente (`playback_speed`).
 
 ## 2) Ficheros web (experimento texto -> audio)
 
@@ -81,3 +91,4 @@ No es nuevo, pero es pieza clave porque la app tray lo usa para `Iniciar Kokoro`
 - `inference_v2/START_HERE_TRAY_TTS.md`
 - `inference_v2/IMPLEMENTATION_FILES_TRAY_TTS.md`
 - `inference_v2/tray_tts/README.md`
+- `inference_v2/SESSION_LOG_TRAY_TTS_2026-03-03.md`

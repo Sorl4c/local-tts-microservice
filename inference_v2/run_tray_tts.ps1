@@ -6,8 +6,8 @@ $ScriptDir = $PSScriptRoot
 $VenvRoot = Join-Path $ScriptDir $VenvPath
 $Python = Join-Path $VenvRoot "Scripts\python.exe"
 $Pip = Join-Path $VenvRoot "Scripts\pip.exe"
-$Req = Join-Path $ScriptDir "tray_tts\requirements.txt"
-$App = Join-Path $ScriptDir "tray_tts\app.py"
+$Req = Join-Path $ScriptDir "tray_tts_qt\requirements.txt"
+$App = Join-Path $ScriptDir "tray_tts_qt\app.py"
 
 if (-not (Test-Path $Python)) {
     Write-Error "No se encontro python en '$Python'. Revisa .venv_v2."
@@ -15,9 +15,9 @@ if (-not (Test-Path $Python)) {
 }
 
 if (Test-Path $Pip) {
-    Write-Host "Instalando dependencias de tray_tts..."
+    Write-Host "Instalando dependencias de tray_tts_qt..."
     & $Pip install -r $Req
 }
 
-Write-Host "Iniciando Kokoro Tray TTS..."
+Write-Host "Iniciando Kokoro Tray TTS (Qt)..."
 & $Python $App

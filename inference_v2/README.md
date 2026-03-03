@@ -13,6 +13,9 @@ Este indice centraliza la documentacion de la implementacion actual (web + tray 
 3. README tecnico de la app tray:
 - [tray_tts/README.md](/C:/local/microservicios/local-tts-service/inference_v2/tray_tts/README.md)
 
+4. Log de sesion y cambios (2026-03-03):
+- [SESSION_LOG_TRAY_TTS_2026-03-03.md](/C:/local/microservicios/local-tts-service/inference_v2/SESSION_LOG_TRAY_TTS_2026-03-03.md)
+
 ## Scripts de arranque
 
 1. Tray app:

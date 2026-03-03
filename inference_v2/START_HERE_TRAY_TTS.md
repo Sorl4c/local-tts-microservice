@@ -27,18 +27,31 @@ Al arrancar, aparecera un icono en la bandeja del sistema (al lado del reloj).
    - `Ctrl+Shift+Y` (principal)
    - `Ctrl+Alt+Y` (fallback)
 5. Deberia reproducirse audio directamente.
+6. Aparecera popup `Kokoro Audio` con controles:
+   - `Stop`
+   - `Pause`
+   - `Play`
+   - slider de velocidad
+   - combo de voz
 
 ## 4) Pruebas recomendadas
 
 1. `Probar audio local`: valida que el reproductor de audio de la app funciona.
 2. `Diagnostico: endpoint Kokoro`: valida conectividad con el servicio TTS.
 3. `Probar lectura ahora`: fuerza lectura del portapapeles sin usar hotkey.
+4. `Mostrar control de audio`: abre popup manualmente.
 
-## 5) Cierre
+## 5) Nota de comportamiento Pause/Play
+
+- `Pause` detiene audio actual y deja estado pausado.
+- `Play` relanza lectura del ultimo texto desde el inicio.
+- No hay reanudacion sample-perfect en esta iteracion (limitacion de `winsound`).
+
+## 6) Cierre
 
 - Opcion `Salir` desde el menu del tray.
 
-## 6) Nota sobre UX pendiente
+## 7) Nota sobre UX pendiente
 
 - Si seleccionas texto y pulsas hotkey "demasiado rapido", puede tomar el valor previo del portapapeles.
 - En esta version hay mitigacion (delay + reintentos), pero queda pendiente un ajuste fino de experiencia para la siguiente sesion.
